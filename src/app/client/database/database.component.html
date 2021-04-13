@@ -1,0 +1,110 @@
+
+<form [formGroup]="projectdb" id="form" novalidate (ngSubmit)="onSubmit(projectdb.value)">
+  <div class="column_container  panel  col"  >
+    <div class="md-form mt-3">
+
+<p>DATABASE NAME:<input type="text" class="form-control"  placeholder="Database Name" formControlName="dbName"></p>
+<mat-error *ngIf="projectdb.hasError('required', 'dbName')">Description est requis</mat-error>
+</div>
+
+<div class="md-form mt-3">
+
+<p>DB TYPE:
+  <select formControlName="dbType"  class="form-control">
+    <option>MongoDB</option>
+    <option>MySql</option>
+  </select>
+</p>
+<br>
+</div>
+</div>
+
+
+	<button type="button"  (click)="addTable()" class="point">+ </button>
+
+  <button   type="submit" class="btn btn-primary " [disabled]="projectdb.invalid">
+
+    Json</button>
+
+
+<div class="row">
+<div class="col-md-offset-a col-md-5 table table-striped">
+
+
+	<div class="container" formArrayName="tables">
+		<div class="panel panel-primary project" [style.left.px]="500" id="{{projectdb.get('tables')['controls'][i].get('id').value}}" #t
+    (click)="setPosition(i, t.offsetTop, t.offsetLeft )" [formGroupName]="i"
+    *ngFor="let table of getTables(projectdb); let i = index" style="position:absolute;"
+    [style.top.px]="projectdb.get('tables')['controls'][i].get('x').value"
+    [style.left.px]="projectdb.get('tables')['controls'][i].get('y').value">
+
+        <div class="panel-heading " > Table :
+          <input type="text" class="input"  placeholder="Table Name" formControlName="name">
+
+
+				<i type="button" class="btn btn-primary" (click)="addColumn(i)">+</i>
+
+				<i type="button"  class="input"  class="btn btn-primary" *ngIf="getTables(projectdb).length > 1" (click)="removeTable(i)">
+					X
+				</i>
+
+			</div>
+			<div class="task" formArrayName="columns">
+        <div class="panel-body">
+            <div class="form-group" >
+              <div class="column_container panel-body panel"
+              id="{{projectdb.get('tables')['controls'][i].get('columns')['controls'][j].get('id').value}}"
+              mdbTableCol [formGroupName]="j" *ngFor="let question of getColumns(table); let j = index">
+
+          <div >{{j}}</div>
+					<div> <input type="text" placeholder="attribute Name"  class="tailleinput"formControlName="name" [required]>
+					</div>
+					<div> <select formControlName="datatype" [required]>
+
+							<option>INT</option>
+							<option>VARCHAR</option>
+							<option>DATE</option>
+							<option>DATETIME</option>
+							<option>BOOLEAN</option>
+						</select></div>
+            <div>
+              <select  class="form-group  "formControlName="required"   [required]>
+
+							<option>Required</option>
+							<option>optional</option>
+
+						</select></div>
+            <div>
+
+              <input type="number"class="tailleinput"  formControlName="taille">
+
+            </div>
+					<div>
+
+						<input type="checkbox"  class="tailleinput"  (click)="primatyKeyCheck(i,j)" formControlName="primaryKey">
+
+					</div>
+
+
+					<div>
+						<i type="button" class="btn btn-primary"   *ngIf="getColumns(table).length > 1"
+							(click)="removeColumn(i,j)">X</i>
+					</div>
+
+				</div>
+
+			</div>
+</div>
+</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+</form>
+
+
+<br><br><br><br>
+
+<pre> {{projectdb.value | json}} </pre>

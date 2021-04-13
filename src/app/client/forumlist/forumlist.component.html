@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+</head>
+<title>Custom Pipe Example</title>
+<body>
+  <header id="header-wrap" data-spy="affix" data-offset-top="55">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                       
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#about-us">About Us</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#screenshots">Screenshots</a></li>
+                            <li><a href="#team">Team</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li class="active"><a href="#blog">Blog</a></li>
+                            <li><a href="#contact-us">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Header End -->
+<!--======= intro =======-->
+ 
+<section class="iq-breadcrumb overview-block-pt text-center iq-bg iq-bg-fixed iq-over-black-90 iq-box-shadow" style="background: url(images/about/04.jpg);" >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="heading-title iq-breadcrumb-title iq-mtb-100">
+                        <h1 class="title iq-tw-8 iq-font-white">BLOG </h1>
+                        <div class="divider white"></div>
+                    </div>
+                <ul class="breadcrumb">
+                
+   
+                    <li><a [routerLink]="['/forum']" > Add new</a></li>
+                    <li class="active">Blog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="text-align: center">
+    <br/> </div>
+    
+    <div class="container h-300">
+          <div class="col-md-6">
+            <div class="row align-items-center h-300">
+              
+            
+              <li
+                class="list-group-item"
+                class="col-sm-6"
+               
+                *ngFor="let forum of forumList; let i = index"
+                [class.active]="i == currentIndex"
+                (click)="setActiveTutorial(forum, i)">
+               
+                  
+                    
+               
+                  <img src="http://localhost:3000/file/{{forum.image}}"style="width:200px;height:200">   
+
+                    
+
+                   
+                
+              <a class="button pull-center iq-mt-50" [routerLink]="['/forumdetail/',forum._id]"
+                > Details</a>
+               
+                
+              </li>
+              
+        
+            
+      
+    </div>
+    
+</div>
+
+
+          </div>
+          
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+          <div class="footer">
+           
+          
+             
+          
+          
+          
+              <!-- Get in Touch -->
+          
+              <section id="contact-us" class="iq-our-touch">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-10 col-md-offset-1">
+                              <div class="iq-get-in iq-pall-40 white-bg">
+                                  <div class="row">
+                                      <div class="col-sm-12">
+                                          <div class="heading-title iq-mb-60">
+                                              <h2 class="title iq-tw-6">Get in Touch</h2>
+                                              <div class="divider"></div>
+                                              <p>Do you have a question for us? we'd love to here from you and we would be happy to answer your questions. Reach out to us and we'll respond as soon as we can.</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div id="formmessage">Success/Error Message Goes Here</div>
+                                      <form class="form-horizontal" id="contactform" method="post" action="../php/contact-form.php">
+                                          <div class="contact-form">
+                                              <div class="col-sm-6">
+                                                  <div class="section-field">
+                                                      <input #nomInput id="nom" name =" nom " ngModel class="input" type="text" placeholder="Name*" >
+                                                  </div>
+                                                  <div class="section-field">
+                                                      <input #mailInput id="mail" name =" mail " ngModel class="input" type="text" placeholder="mail*" >
+
+                                                  </div>
+                                                  <div class="section-field">
+                                                      <input #telInput id="tel" name =" tel " ngModel class="input" type="text" placeholder="tel*" >
+
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6">
+                                                  <div class="section-field textarea">
+                                                      <textarea #commentaireInput id="commentaire" name =" commentaire " ngModel class="input-message" placeholder="Comment*" rows="7" ></textarea>
+
+                                                  </div>
+                                                  <input type="hidden" name="action" value="sendEmail" />
+                                                  <button class="button is-success" (click)="onaddreclamationbutton(nomInput.value, mailInput.value,telInput.value,commentaireInput.value)">
+                                                    Send Message
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                      <div id="ajaxloader" style="display:none"><img class="center-block mt-30 mb-30" src="images/ajax-loader.gif" alt=""></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          
+              <!-- Get in Touch END -->
+          
+          
+              <!-- Footer -->
+          
+              <footer class="iq-footer white-bg text-center">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-10 col-md-offset-1">
+                              <div class="footer-info iq-mt-50 iq-mb-30">
+                                  <img id="logo_img" class="img-responsive center-block iq-mb-10 wow zoomIn" data-wow-duration="1s" src="images/logo-footer.png" alt="">
+                                  <p>Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="footer-copyright iq-ptb-20">© Copyright 2018 Appino Developed by <a target="_blank" href="https://iqonicthemes.com/">iqonicthemes</a>.</div>
+                          </div>
+                      </div>
+                  </div>
+              </footer>
+          
+              <!-- Footer END -->
+          
+          </div>
+          
+          
+          </body>
+          </html>
+          
+

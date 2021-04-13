@@ -1,0 +1,38 @@
+<div class="container-fluid">
+   <section class="hk-sec-wrapper">
+    <h5 class="hk-sec-title">List Users </h5>
+      <div class="col-sm">
+          <div class="table-wrap">
+              <table   style="width:100%; height: 100%;"
+               class="table table-hover  display">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Verified</th>
+                  <th>Role</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody *ngFor="let user of users; let i = index"
+          >
+              <tr>
+                  <th scope="row">1</th>
+                  <td>{{user.name}}</td>
+                  <td>{{user.prenom}}</td>
+                  <td>{{user.verified}}</td>
+                  <td><span class="badge badge-info">{{user.roles}}</span> </td>
+                 <td> <button mat-raised-button (click)="deleteImportantNote(user._id,user.email); ngOnInit()">Delete</button>
+                  <td> <button mat-raised-button (click)="UpdateImportantNote(user._id); ngOnInit()" *ngIf=user.verified>Disable</button>
+                    <td> <button mat-raised-button (click)="UpdateImportantEnable(user._id); ngOnInit()"  *ngIf=!user.verified>Enable</button>
+
+                </td>
+              </tr>
+
+
+          </tbody>
+      </table>
+  </div>
+</div>
+</section>

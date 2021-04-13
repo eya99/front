@@ -1,0 +1,236 @@
+<div class="row">
+  <div class="col-xl-12">
+    <div class="hk-row">
+      <div class="col-lg-7">
+        <div class="card card-refresh">
+          <div class="refresh-container">
+            <div class="loader-pendulums"></div>
+          </div>
+          <div class="card-header card-header-action">
+            <section class="hk-sec-wrapper">
+              <div class="row">
+                <h1 class="hk-sec-title col-sm">Lunch Screen</h1>
+              </div>
+
+              <p class="mb-25">Design a launch screen for your mobile app</p>
+
+              <div class="row">
+                <div class="col-sm">
+                  <div class="row">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <label for="firstName">Select Background Image</label>
+                          <input class="form-control" />
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                          <label for="lastName">Select Background Color </label>
+                          <input
+                            (keyup)="onKey($event)"
+                            class="form-control"
+                            [(colorPicker)]="color"
+                            [style.background]="color"
+                          />
+                          {{ color }}
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 form-group">
+                          <label for="firstName">Set the icon size</label>
+                          <input
+                            type="range"
+                            class="form-range"
+                            id="customRange1"
+                            min="40"
+                            max="150"
+                            (change)="eventIconSize($event)"
+                          />
+                          <p>{{ icon_size }}</p>
+                        </div>
+                        <div class="col-md-6 form-group">
+                          <label for="firstName">Set the icon round</label>
+                          <input
+                            type="range"
+                            class="form-range"
+                            id="customRange1"
+                            min="0"
+                            max="50"
+                            (change)="eventRoundSize($event)"
+                          />
+                          <p>{{ icon_size }}</p>
+                        </div>
+                      </div>
+                      <div class="row"></div>
+                      <label for="address2">Add progress spinner </label>
+                      <mat-spinner></mat-spinner>
+
+                      <button type="button" class="btn btn-secondary">
+                        Save
+                      </button>
+                    </form>
+
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="card-body">
+            <div id="e_chart_1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab label="Android">
+              <div
+                style="margin-bottom: -7px; margin-right: 20px; display: block"
+              >
+                <img src="../../../assets/images/top.jpg" width="250" />
+              </div>
+
+              <div style="display: table">
+                <div style="display: table-cell">
+                  <img src="../../../assets/images/left.jpg" height="400" />
+                </div>
+
+                <div
+                  class="example-boundary"
+                  [ngStyle]="{ background: color }"
+                  style="
+                    min-width: 222px;
+                    max-width: 222px;
+                    display: table-cell;
+
+                    text-align: center;
+                    margin: 0 auto;
+                    padding: 0px;
+                    position: relative;
+                  "
+                >
+                  <div
+                    class="example-box"
+                    cdkDragBoundary=".example-boundary"
+                    cdkDrag
+                    id="idIcon"
+                    [ngStyle]="{
+                      background: icon_color,
+                      'font-family': font_text_icon,
+                      'font-size': font_size_icon,
+
+                      'min-width': icon_size,
+                      'min-height': icon_size,
+                      'border-radius': round_icon,
+                      color: text_color
+                    }"
+                    style="
+                      top: 20%;
+                      left: 35%;
+                      position: absolute;
+                      color: white;
+                      text-align: center;
+
+                      padding: 7px;
+                      padding-top: 10px;
+                      font-family: Arial;
+                      font-weight: bolder;
+                    "
+                  >
+                    {{ icon_text }}
+                  </div>
+                  <p
+                    style="
+                      margin-top: 273px;
+                      margin-left: 60px;
+                      width: 40px;
+                      height: 40px;
+                      position: absolute;
+                      color: white;
+                      text-align: center;
+
+                      padding-top: 10px;
+                    "
+                  ></p>
+                </div>
+
+                <div style="display: table-cell">
+                  <img src="../../../assets/images/right.jpg" height="400" />
+                </div>
+              </div>
+              <div style="margin-top: -10px; position: sticky">
+                <img src="../../../assets/images/bottom.jpg" width="250" />
+              </div>
+            </mat-tab>
+            <mat-tab label="iPhone"
+              ><div
+                style="margin-bottom: -7px; margin-right: 20px; display: block"
+              >
+                <img src="../../../assets/images/iphone-top.jpg" width="250" />
+              </div>
+
+              <div style="display: table">
+                <div style="display: table-cell">
+                  <img
+                    src="../../../assets/images/iphone-left.jpg"
+                    height="400"
+                  />
+                </div>
+
+                <div
+                  style="
+                    min-width: 217px;
+                    max-width: 217px;
+                    display: table-cell;
+                    background-image: url('../../../assets/images/iphone_menu.jpg');
+                    text-align: start;
+                    margin: 0 auto;
+                    padding: 0px;
+                    position: relative;
+                  "
+                >
+                  <div
+                    style="
+                      margin-top: 245px;
+                      margin-left: 60px;
+                      width: 40px;
+                      height: 40px;
+                      position: absolute;
+                      color: white;
+                      text-align: center;
+                      border-radius: 10px;
+                      padding: 7px;
+                      padding-top: 10px;
+                      font-family: Arial;
+                      font-weight: bolder;
+                    "
+                  ></div>
+                </div>
+
+                <div style="display: table-cell">
+                  <img
+                    src="../../../assets/images/iphone-right.jpg"
+                    height="400"
+                  />
+                </div>
+              </div>
+              <div style="margin-top: -10px; position: sticky">
+                <img
+                  src="../../../assets/images/iphone-bottom.jpg"
+                  width="250"
+                /></div
+            ></mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="hk-row">
+      <div class="col-lg-8"></div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</div>

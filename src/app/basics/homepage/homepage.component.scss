@@ -1,0 +1,25 @@
+button {
+  &.google,
+  &.facebook {
+    width: 70%;
+    text-transform: none;
+    color: #ffffff;
+    font-size: 13px;
+
+
+
+    mat-icon {
+      color: #ffffff;
+      margin: 0 8px 0 0;
+    }
+  }
+
+  &.google {
+    background-color: #d73d32;
+    margin-bottom: 8px;
+  }
+
+  &.facebook {
+    background-color: rgb(63, 92, 154);
+  }
+}

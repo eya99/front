@@ -1,0 +1,204 @@
+
+
+
+    <!-- Preloader -->
+    <!-- <div class="preloader-it">
+        <div class="loader-pendulums"></div>
+    </div> -->
+    <!-- /Preloader -->
+
+	<!-- HK Wrapper -->
+
+
+
+			<!-- Container -->
+            <div class="container-fluid">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12 pa-0">
+                        <div class="profile-cover-wrap overlay-wrap">
+                            <div class="profile-cover-img" style="background-image:url('assets/dist/img/trans-bg.jpg')"></div>
+							<div class="bg-overlay bg-trans-dark-60"></div>
+							<div class="container profile-cover-content py-50">
+								<div class="hk-row">
+									<div class="col-lg-6">
+										<div class="media align-items-center">
+											<div class="media-img-wrap  d-flex">
+                        <div>
+                          <img style="width: 140px; height: 140px;"[src]="getSafeUrl()">
+                         </div>
+											</div>
+											<div class="media-body">
+												<div class="text-white text-capitalize display-6 mb-5 font-weight-400">{{user.name}} {{user.prenom}}</div>
+												<div class="font-14 text-white"><span class="mr-5"><span class="font-weight-500 pr-5">Email:</span><span class="mr-5">{{user.email}}</span></span></div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="button-list">
+											<a href="#" class="btn btn-dark btn-wth-icon icon-wthot-bg btn-rounded"><span class="btn-text">Message</span><span class="icon-label"><i class="icon ion-md-mail"></i> </span></a>
+											<a href="#" class="btn btn-icon btn-icon-circle btn-indigo btn-icon-style-2"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
+											<a href="#" class="btn btn-icon btn-icon-circle btn-sky btn-icon-style-2"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
+											<a href="#" class="btn btn-icon btn-icon-circle btn-purple btn-icon-style-2"><span class="btn-icon-wrap"><i class="fa fa-instagram"></i></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="bg-white shadow-bottom">
+							<div class="container">
+								<ul class="nav nav-light nav-tabs" role="tablist">
+									<li class="nav-item">
+										<a href="#" class="d-flex h-60p align-items-center nav-link active">Seetings</a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="d-flex h-60p align-items-center nav-link">Projects</a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="d-flex h-60p align-items-center nav-link">Groups</a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="d-flex h-60p align-items-center nav-link">Photos</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+
+  <!-- partial:../../partials/_navbar.html -->
+
+  <!-- partial -->
+  <div class="card card-profile-feed">
+    <div class="card-header card-header-action">
+
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:../../partials/_sidebar.html -->
+
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+
+        <div class="row">
+
+
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Profile user</h4>
+                <form class="forms-sample" [formGroup]="registerForm" (ngSubmit)="login()">
+
+                  <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" class="form-control" formControlName="nom"    required placeholder="Name">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputName1">Last Name</label>
+                    <input type="text" class="form-control" formControlName="prenom"  required placeholder="Name">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail3">Email address</label>
+                    <input type="email" class="form-control"formControlName="email" placeholder="Email">
+
+                  </div>
+
+                  <div class="form-group" >
+
+                      <div class="mb-2" *ngIf="user.password"><b>Change Password</b></div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Current Password</label>
+                            <input class="form-control" formControlName="curentpwd"type="password" placeholder="••••••">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>New Password</label>
+                            <input class="form-control"formControlName="password" type="password" placeholder="••••••">
+                          </div>
+                        </div>
+                      </div>
+                      <div  class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                            <input class="form-control"formControlName="confirm" type="password" placeholder="••••••"></div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  <div class="form-group">
+
+
+                  </div>
+                  <div fxLayout="column">
+                    <div
+                      class="upload mt-8"
+                      ngx-dropzone
+                      accept="image/gif,image/jpeg,image/pjpeg,image/png,image/x-png"
+                      (change)="onSelect($event)"
+                      [multiple]="false"
+                    >
+                      <ngx-dropzone-label
+                      >
+
+                          <button class="uploadButton" type="button">
+                           change photo
+                          </button>
+
+                      </ngx-dropzone-label>
+                      <ngx-dropzone-image-preview
+
+                        ngProjectAs="ngx-dropzone-preview"
+                        *ngFor="let f of files"
+                        [file]="f"
+                        [removable]="true"
+                        (removed)="onRemove(f)"
+                      >
+                      </ngx-dropzone-image-preview>
+                    </div>
+                  </div>
+
+                  <button type="submit"class="btn btn-gradient-primary mr-2">update</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:../../partials/_footer.html -->
+
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+</div>
+
+<!-- End custom js for this page -->
+  <!-- partial:../../partials/_navbar.html -->
+
+  <!-- partial -->
+
+
+
+
+                <!-- /Row -->
+
+            <!-- /Container -->
+
+            <!-- Footer -->
+

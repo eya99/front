@@ -1,0 +1,30 @@
+<div id="mail-confirm" fxLayout="column">
+
+  <div id="mail-confirm-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+      <div id="mail-confirm-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+          <div class="logo">
+              <mat-icon class="mat-accent s-96">email</mat-icon>
+          </div>
+
+          <div class="title">Changer votre mot de passe !</div>
+
+          <div class="subtitle">
+              <p>
+                  Un e-mail a été envoyé à <b>{{email}}</b>
+              </p>
+              <p>
+                  Vérifiez votre boîte de réception et cliquez sur le lien «modifier votre mot de passe» pour changer votre mot de passe
+              </p>
+          </div>
+
+          <div class="message">
+              <a class="link" [routerLink]="'/inscription'">CONNEXION</a>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
